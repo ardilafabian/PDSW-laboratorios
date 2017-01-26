@@ -26,6 +26,8 @@
 */
 package main.java;
 
+import main.java.factory.AbstractCountryFactory;
+import main.java.factory.CountryRegion;
 import java.awt.Color;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import main.java.controller.*;
@@ -34,7 +36,6 @@ import main.java.view.*;
 
 public class SwingProject {
     public static final String PROJECT_NAME = "CS 245 - Swing Project v1";
-    public static final String DICTIONARY = "src/main/resources/dictionary.txt";
     public static final String CONTRIBUTORS[] = {
         "Omar Rodriguez, 008796203", 
         "Nahid Enayatzadeh, 010164622",
@@ -55,6 +56,9 @@ public class SwingProject {
     public static final String CREDITS_KEY = "creditsscreen";
     public static final String GAME_KEY = "gamescreen";
     public static final String GAME_OVER_KEY = "gameoverscreen";
+    
+    // Region
+    public static final CountryRegion REGION = CountryRegion.EEUU;
 
     private MainFrameController mainFrameController;
     
@@ -72,6 +76,8 @@ public class SwingProject {
     //purpose: Create the various panels (game screens) for our game
     // and attach them to the main frame.
     private void setup(){
+        AbstractCountryFactory fab = AbstractCountryFactory.getInstance(REGION);
+        
         mainFrameController = new MainFrameController(
                 new MainFrameModel(PROJECT_NAME,600,400,null,EXIT_ON_CLOSE), 
                 new MainFrame()
@@ -91,7 +97,7 @@ public class SwingProject {
         
         gameController = new GameController(
                 new GamePanel(),
-                new GameModel(DICTIONARY),
+                new GameModel(fab),
                 mainFrameController
         );
         

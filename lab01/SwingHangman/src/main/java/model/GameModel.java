@@ -12,6 +12,7 @@
 ****************************************************************/ 
 package main.java.model;
 
+import main.java.factory.AbstractCountryFactory;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -30,13 +31,10 @@ public class GameModel implements PanelModel{
     private Scanner scan;
     private String randomWord;
     private char[] randomWordCharArray;
-       
-    public GameModel(){
-    }
     
-    public GameModel(String fileName){
+    public GameModel(AbstractCountryFactory fab){
         dictionary = new ArrayList<String>();
-        this.readDictionary(fileName);
+        this.readDictionary(fab.getDictionary().getFilename());
         randomWord = selectRandomWord();
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;

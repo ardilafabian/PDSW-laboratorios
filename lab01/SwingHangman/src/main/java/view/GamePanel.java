@@ -22,6 +22,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import main.java.factory.AbstractCountryFactory;
 
 public class GamePanel extends JPanel{
     private JButton skipButton;
@@ -38,7 +39,8 @@ public class GamePanel extends JPanel{
     public GamePanel() {
         blanksHolder = new JPanel();
         blanksArrayList = new ArrayList<>();
-        keyboardButtonArray = new JButton[26];
+        keyboardButtonArray = new JButton[AbstractCountryFactory.getInstance()
+                .getKeyboard().getCharacters().length];
         gameNameLabel = new JLabel("Placeholder");
         gameNameLabel.setForeground(new Color(30,144,255));
         gameNameLabel.setFont(new Font("Impact", Font.PLAIN,24));
@@ -85,9 +87,10 @@ public class GamePanel extends JPanel{
         
         JPanel keyboard = new JPanel();
         keyboard.setLayout(new GridLayout(3,1));
-        for(int i=65; i<91; i++){
-            keyboardButtonArray[i-65] = new JButton(Character.toString((char) i));
-            keyboard.add(keyboardButtonArray[i-65]);
+        char[] characters = AbstractCountryFactory.getInstance().getKeyboard().getCharacters();
+        for(int i = 0; i < characters.length; i++){
+            keyboardButtonArray[i] = new JButton(Character.toString(characters[i]));
+            keyboard.add(keyboardButtonArray[i]);
         }
         bottomContainer.add(keyboard);
         

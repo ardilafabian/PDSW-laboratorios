@@ -11,19 +11,25 @@ package main.java.factory;
  */
 public class LatinFactory extends AbstractCountryFactory{
 
+    LatinFactory() {
+        keyboard = new LatinKeyboard();
+        image = new LatinImage();
+        dictionary = new LatinDictionary();
+    }
+    
     @Override
     public AbstractKeyboard getKeyboard() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return keyboard;
     }
 
     @Override
     public AbstractImage getImage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return image;
     }
 
     @Override
     public AbstractDictionary getDictionary() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dictionary;
     }
     
 }

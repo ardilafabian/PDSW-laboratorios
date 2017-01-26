@@ -58,7 +58,7 @@ public class SwingProject {
     public static final String GAME_OVER_KEY = "gameoverscreen";
     
     // Region
-    public static final CountryRegion REGION = CountryRegion.LATIN;
+    public static final CountryRegion REGION = CountryRegion.EUROPE;
 
     private MainFrameController mainFrameController;
     

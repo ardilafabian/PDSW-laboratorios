@@ -87,7 +87,8 @@ public class GamePanel extends JPanel{
         
         JPanel keyboard = new JPanel();
         keyboard.setLayout(new GridLayout(3,1));
-        char[] characters = AbstractCountryFactory.getInstance().getKeyboard().getCharacters();
+        char[] characters = AbstractCountryFactory.getInstance()
+                .getKeyboard().getCharacters();
         for(int i = 0; i < characters.length; i++){
             keyboardButtonArray[i] = new JButton(Character.toString(characters[i]));
             keyboard.add(keyboardButtonArray[i]);

@@ -11,19 +11,25 @@ package main.java.factory;
  */
 public class EuropeFactory extends AbstractCountryFactory{
 
+    EuropeFactory() {
+        image = new EuropeImage();
+        keyboard = new EuropeKeyboard();
+        dictionary = new EuropeDictionary();
+    }
+    
     @Override
     public AbstractKeyboard getKeyboard() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return keyboard;
     }
 
     @Override
     public AbstractImage getImage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return image;
     }
 
     @Override
     public AbstractDictionary getDictionary() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dictionary;
     }
     
 }

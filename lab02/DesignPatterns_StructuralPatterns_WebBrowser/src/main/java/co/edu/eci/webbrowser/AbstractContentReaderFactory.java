@@ -33,5 +33,5 @@ public abstract class AbstractContentReaderFactory {
         return instance;
     }
     
-    public abstract SiteContentReader getProxy();
+    public abstract SiteContentReader getProxy(SiteContentReader src);
 }

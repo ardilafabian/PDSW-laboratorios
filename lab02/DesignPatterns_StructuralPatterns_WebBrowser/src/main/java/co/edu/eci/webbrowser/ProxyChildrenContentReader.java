@@ -13,18 +13,27 @@ import org.darkweb.utils.SiteContentReader;
  */
 public class ProxyChildrenContentReader extends AbstractProxyContentReader{
     
+    private SiteContentReader siteContent;
+    private String badWords[] = {"bomba", "Bomba", "explosivo", "Explosivo", "violencia", "Violencia"};
+    
     public ProxyChildrenContentReader(SiteContentReader src) {
-        
+        siteContent = src;
     }
 
     @Override
     public String getNextLine() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String line = siteContent.getNextLine();
+        for (String wrd : badWords){
+            if (line.contains(wrd)){
+                line.replaceAll(wrd, "*****");
+            }
+        }
+        return line;
     }
 
     @Override
     public boolean hasMoreLines() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return siteContent.hasMoreLines();
     }
     
 }

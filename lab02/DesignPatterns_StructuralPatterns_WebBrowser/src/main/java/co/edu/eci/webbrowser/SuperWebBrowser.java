@@ -46,7 +46,7 @@ public class SuperWebBrowser extends Application {
         
         WebView myBrowser = new WebView();
 
-        WebEngineSingleton.getInstance().loadContent(myBrowser.getEngine(), new WebDataExtractor().extract("http://www.example.com"));
+        WebEngineSingleton.getInstance().loadContent(myBrowser.getEngine(), new AbstractContentReaderFactory.getInstance(Filter.CHILDREN).getProxy(new WebDataExtractor().extract("http://www.example.com")));
 
         
         BorderPane root = new BorderPane();

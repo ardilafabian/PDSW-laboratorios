@@ -14,8 +14,8 @@ import org.darkweb.utils.SiteContentReader;
 public class ChildrenContentReaderFactory extends AbstractContentReaderFactory{
 
     @Override
-    public SiteContentReader getProxy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public SiteContentReader getProxy(SiteContentReader src) {
+        return new ProxyChildrenContentReader(src);
     }
     
     

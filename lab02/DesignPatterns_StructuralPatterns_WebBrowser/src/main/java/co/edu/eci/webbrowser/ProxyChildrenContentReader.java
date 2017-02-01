@@ -14,7 +14,7 @@ import org.darkweb.utils.SiteContentReader;
 public class ProxyChildrenContentReader extends AbstractProxyContentReader{
     
     private SiteContentReader siteContent;
-    private String badWords[] = {"bomba", "Bomba", "explosivo", "Explosivo", "violencia", "Violencia"};
+    private String badWords[] = {"bomba", "explosivo", "violencia"};
     
     public ProxyChildrenContentReader(SiteContentReader src) {
         siteContent = src;
@@ -24,8 +24,8 @@ public class ProxyChildrenContentReader extends AbstractProxyContentReader{
     public String getNextLine() {
         String line = siteContent.getNextLine();
         for (String wrd : badWords){
-            if (line.contains(wrd)){
-                line.replaceAll(wrd, "*****");
+            if (line.toLowerCase().contains(wrd)){
+                line = line.replace(wrd, "*****");
             }
         }
         return line;

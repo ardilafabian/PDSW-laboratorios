@@ -42,11 +42,13 @@ public class SuperWebBrowser extends Application {
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Super-Web Browser. -http://www.example.com");
 
-        
+        Filter filter = Filter.COMPANY;
         
         WebView myBrowser = new WebView();
 
-        WebEngineSingleton.getInstance().loadContent(myBrowser.getEngine(), new AbstractContentReaderFactory.getInstance(Filter.CHILDREN).getProxy(new WebDataExtractor().extract("http://www.example.com")));
+        WebEngineSingleton.getInstance().loadContent(myBrowser.getEngine(), 
+                AbstractContentReaderFactory.getInstance(filter)
+                        .getProxy(new WebDataExtractor().extract("http://www.example.com")));
 
         
         BorderPane root = new BorderPane();
@@ -56,7 +58,8 @@ public class SuperWebBrowser extends Application {
             public void handle(KeyEvent ke) {
                 if (ke.getCode().equals(KeyCode.ENTER)) {
                     try {
-                        WebEngineSingleton.getInstance().loadContent(myBrowser.getEngine(), new WebDataExtractor().extract(tf.getText()));
+                        WebEngineSingleton.getInstance().loadContent(myBrowser.getEngine(), 
+                                AbstractContentReaderFactory.getInstance(filter).getProxy(new WebDataExtractor().extract(tf.getText())));
                         primaryStage.setTitle("Super-Web Browser. -"+tf.getText());
                     } catch (IOException ex) {                        
                         Logger.getLogger(SuperWebBrowser.class.getName()).log(Level.SEVERE, null, ex);
